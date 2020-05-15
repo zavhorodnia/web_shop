@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'users',
     'shop',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -139,3 +140,7 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.TokenAuthentication',
     ]
 }
+
+
+# Crispy
+CRISPY_TEMPLATE_PACK = 'bootstrap4'

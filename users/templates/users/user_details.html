@@ -1,0 +1,33 @@
+{% extends 'users/navbar.html' %}
+
+{% block title %}User profile{% endblock %}
+
+{% block content %}
+    <h1 class="mt-2">User profile</h1>
+    <hr class="mt-0 mb-4">
+    <p>Email: {{ user.email }}</p>
+    <p>Shops:</p>
+    <div class="container">
+    <div class="row">
+    <div class="col-6">
+    <div class="list-group">
+    {% for shop in user.shops.all %}
+        <a href="{% url 'shop_details' shop.shop_id %}" class="list-group-item list-group-item-action">
+            {{ shop.name }}</a>
+    {% empty %}
+        </div>
+        <div class="alert alert-info" role="alert">
+          This user doesn't own any shops.
+    {% endfor %}
+    </div>
+    </div>
+    </div>
+    </div>
+    {% if request.user.is_admin %}
+        <hr class="mb-4">
+        <a class="btn btn-primary" href="{% url 'edit_user' user.id %}" role="button">Edit</a>
+        {% if request.user.id != user.id %}
+            <a class="btn btn-danger" href="{% url 'delete_user' user.id %}" role="button">Delete</a>
+        {% endif %}
+    {% endif %}
+{% endblock %}

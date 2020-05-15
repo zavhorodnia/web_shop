@@ -1,0 +1,18 @@
+{% extends 'users/base.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% load crispy_forms_tags %}
+
+{% block form %}
+    <h2 class="mt-2">Log in</h2>
+    <hr class="mt-0 mb-4">
+    {%  if invalid %}
+        <div class="alert alert-danger" role="alert">
+          Email or password is invalid. Please, try again
+        </div>
+    {% endif %}
+    {% crispy form %}
+    <p>or</p>
+    <a class="btn btn-primary" href="{% url 'signup' %}" role="button">Sign up</a>
+{% endblock %}

@@ -6,3 +6,6 @@ class Shop(models.Model):
     shop_id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=64)
     users = models.ManyToManyField(ShopUser, related_name='shops', blank=False)
+
+    def __str__(self):
+        return self.name

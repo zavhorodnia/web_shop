@@ -1,0 +1,10 @@
+{% extends 'users/base.html' %}
+
+{% block title %}Not authorized{% endblock %}
+
+{% block content %}
+    <div class="alert alert-danger" role="alert">
+    Sorry, you're not authorized to visit this page. Administrator rights are required.
+    </div>
+    <a class="btn btn-primary" href="{% url 'user_details' id %}" role="button">Back to my profile</a>
+{% endblock %}

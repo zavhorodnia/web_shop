@@ -1,0 +1,16 @@
+{% extends 'users/navbar.html' %}
+
+{% block title %}Users{% endblock %}
+
+{% block content %}
+    <h1 class="mt-2">Users</h1>
+    <hr class="mt-0 mb-4">
+    <div class="list-group">
+    {% for user in users %}
+      <a href="{% url 'user_details' user.id %}" class="list-group-item list-group-item-action">
+        {{ user.email }}
+        <span class="badge badge-primary badge-pill float-right">{{ user.shops.count }}</span>
+      </a>
+    {% endfor %}
+    </div>
+{% endblock %}
