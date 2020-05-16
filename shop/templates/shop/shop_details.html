@@ -1,0 +1,27 @@
+{% extends 'users/navbar.html' %}
+
+{% block title %}{{ shop.name }}{% endblock %}
+
+{% block content %}
+    <h1 class="mt-2">Shop info</h1>
+    <hr class="mt-0 mb-4">
+    <h3>{{ shop.name }}</h3>
+
+    <p>Owner(s):</p>
+    <div class="container">
+    <div class="row">
+    <div class="col-6">
+    <div class="list-group">
+    {% for user in shop.users.all %}
+        <a href="{% url 'user_details' user.id %}" class="list-group-item list-group-item-action">
+            {{ user.email }}</a>
+    {% endfor %}
+    </div>
+    </div>
+    </div>
+    </div>
+
+    <hr class="mb-4">
+    <a class="btn btn-primary" href="{% url 'edit_shop' shop.shop_id %}" role="button">Edit</a>
+    <a class="btn btn-danger" href="{% url 'delete_shop' shop.shop_id %}" role="button">Delete</a>
+{% endblock %}

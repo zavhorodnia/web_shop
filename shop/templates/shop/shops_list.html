@@ -1,0 +1,22 @@
+{% extends 'users/navbar.html' %}
+
+{% block title %}Shops{% endblock %}
+
+{% block content %}
+    <h1 class="mt-2">Shops</h1>
+    <hr class="mt-0 mb-4">
+    <div class="list-group">
+    {% for shop in shops %}
+      <a href="{% url 'shop_details' shop.shop_id %}" class="list-group-item list-group-item-action">
+        {{ shop.name }}
+      </a>
+    {% empty %}
+        <div class="alert alert-info" role="alert">
+          There are no registered shops yet.
+        </div>
+    {% endfor %}
+    </div>
+    <div class="mt-3">
+    <a class="btn btn-primary" href="{% url 'create_shop' %}" role="button">Add</a>
+    </div>
+{% endblock %}

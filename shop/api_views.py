@@ -14,7 +14,7 @@ class Shops(generics.ListCreateAPIView):
         try:
             shop = Shop.objects.create(**request.data)
         except TypeError:
-            return Response({'error' : 'invalid format'}, status=status.HTTP_400_BAD_REQUEST)
+            return Response({'error': 'invalid format'}, status=status.HTTP_400_BAD_REQUEST)
         shop.users.set([request.user])
         serializer = self.serializer_class(shop)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
