@@ -30,7 +30,7 @@ def login(request):
                 password=form.cleaned_data['password'])
             if user is not None:
                 django_login(request, user)
-                return redirect('user_details', user_id=user.id)
+                return redirect('index')
             else:
                 context = {'form': form, 'invalid': True}
     else:
@@ -42,6 +42,11 @@ def login(request):
 def logout(request):
     django_logout(request)
     return redirect('login')
+
+
+@login_required(login_url='/login/')
+def index(request):
+    return render(request, 'users/index.html')
 
 
 @login_required(login_url='/login/')

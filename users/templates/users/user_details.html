@@ -3,7 +3,7 @@
 {% block title %}User profile{% endblock %}
 
 {% block content %}
-    <h1 class="mt-2">User profile</h1>
+    <h1 class="mt-2">{% if user.id == request.user.id %}My{% else %}User{% endif %} profile</h1>
     <hr class="mt-0 mb-4">
     <p>Email: {{ user.email }}</p>
     <p>Shops:</p>
@@ -17,7 +17,7 @@
     {% empty %}
         </div>
         <div class="alert alert-info" role="alert">
-          This user doesn't own any shops.
+          {% if user.id == request.user.id %}You don't{% else %}This user doesn't{% endif %} own any shops.
     {% endfor %}
     </div>
     </div>
